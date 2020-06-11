@@ -7,7 +7,13 @@ var question = [
   "What do you call an array of arrays?",
 ];
 //make an array for the answers with index 0 being the correct answer
-var ans1 = ["Callback Function", "Something", "Method", "Objects", "Nested Function"];
+var ans1 = [
+  "Callback Function",
+  "Something",
+  "Method",
+  "Objects",
+  "Nested Function",
+];
 var ans2 = ["12", '"12"', "true", "twelve"];
 var ans3 = ["Void", "Event", "Nested Function", "Argument"];
 var ans4 = ["Method", "Callback", "Void", "Event"];
@@ -22,16 +28,20 @@ var answerbtnsEl = document.querySelector(".answers");
 var scoreInput = document.querySelector("#highscore-name");
 var timer = document.querySelector("#timer");
 var questionPrompt = document.querySelector("#question-prompt");
+var lastResultEl = document.querySelector("#last-result");
 var interval;
 var index = 0;
 var score;
-//Set Timer
+var leaderBoards = localStorage.getItem()
 
 //Start quiz when start button is pressed
-function startQuiz() {
+function startQuiz(event) {
+  event.preventDefault();
+  displayQuestions();
+  index++;
   //interval function for the
   interval = setInterval(function () {
-    console.log(timer.textContent);
+    //console.log(timer.textContent);
     timer.textContent = parseInt(timer.textContent) - 1;
 
     //when timer runs out or goes below stop and go to enter highschore screen and reset timer
@@ -40,23 +50,61 @@ function startQuiz() {
       score = 0;
       clearInterval(interval);
     }
-    if(index === question.length){
-        score = timer.textContent;
-        clearInterval(interval); 
+    //when reaches the end of the quiz stop the timer and go to highscore screen
+    if (index === question.length) {
+      score = timer.textContent;
+      clearInterval(interval);
     }
   }, 1000);
 }
+//function just to display the current questions
+function displayQuestions() {
+  if (index >= question.length) {
+    //switch to highscore
+    return;
+  } else {
+    questionPrompt.textContent = question[index];
+    for (var i = 0; i < 4; i++) {
+      answerbtnsEl.children[i].children[0].textContent = answers[index][i];
+    }
+  }
+}
 
-function nextQuestion() {
+function nextQuestion(event) {
+  event.preventDefault();
+  var bttnGuess = event.target.textContent;
+  //console.log(bttnGuess)
+  displayQuestions();
 
-  questionPrompt.textContent = question[index];
-  //edit the question variable to be the new questions
-  for(var i = 0; i<question.length; i++){
-    answerbtnsEl.children[i].children[0].textContent = answers[index][i];
+  //check to see if the guess was correct
+  var lastResult = isCorrect(bttnGuess);
+  //display correct or incorrect depeind on if the correct choice was made
+  //decrease timer if incorrect choice was a
+  if (lastResult) {
+    lastResultEl.textContent = "Correct";
+  } else {
+    timer.textContent = timer.textContent - 10;
+    lastResultEl.textContent = "Incorrect";
   }
   index++;
 }
-function quizRun() {}
+
+function isCorrect(choice) {
+//   console.log(answers[index - 1][0]);
+//   console.log(choice);
+//   console.log(index);
+
+    //true if the choice matches the correct answer
+  if (choice === answers[index - 1][0]) {
+   // console.log(true);
+    return true;
+  } 
+  //false if given an incorrect answer
+  else {
+    //console.log(false);
+    return false;
+  }
+}
 //Grab local variable as object for user:number
 
 //playfunctions that loops through questions
