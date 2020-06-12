@@ -88,10 +88,10 @@ function displayQuestions() {
   if (index >= question.length) {
 
     toggleDisplay(".enter-hs-screen");
+
     if (timer.textContent <= 0) {
       timer.textContent = 0;
       score = 0;
-      console.log(score)
     }
     else{
       score = timer.textContent;
@@ -120,8 +120,6 @@ function displayQuestions() {
 function grading(event) {
   event.preventDefault();
   var bttnGuess = event.target.textContent;
-  console.log(bttnGuess);
-
   //check to see if the guess was correct
   var lastResult = isCorrect(bttnGuess);
   
@@ -131,7 +129,6 @@ function grading(event) {
     lastResultEl.textContent = "Correct";
   } else {
     timer.textContent = timer.textContent - 10;
-    score = timer.textContent;
     lastResultEl.textContent = "Incorrect";
   }
   displayQuestions();
@@ -167,11 +164,7 @@ function submitScore(event) {
   if (score < 10) {
     score = "0" + score;
   }
-
   var newScore = score + "-" + name;
-  console.log(score);
-  console.log(newScore);
-  console.log(leaderBoards);
   //exception if user deletes leaderboards during quiz
   if (leaderBoards === null) {
     leaderBoards = [];
@@ -201,9 +194,7 @@ function organizeLeaderBoards() {
   //reset the rankings
   leaderBoardsEl.innerHTML = "";
 
-  console.log(leaderBoards);
   leaderBoards = JSON.parse(localStorage.getItem("leaderBoards"));
-  console.log(leaderBoards);
   
   //add new elements to the html
   if (leaderBoards === null) {
@@ -222,7 +213,6 @@ function refresh(event) {
   timer.textContent = 60;
   toggleDisplay(".start-screen");
 }
-
 //function to toggle the current display
 function toggleDisplay(display) {
   if (display === ".start-screen") {
@@ -251,13 +241,15 @@ function toggleDisplay(display) {
   }
 }
 
-//playfunctions that loops through questions
 
-//score counter
+//add listners to the buttons
 startEl.addEventListener("click", startQuiz);
-answerbtnsEl.addEventListener("click", grading);
-submitHSEl.addEventListener("click", submitScore);
 viewHighscoreEl.addEventListener("click", viewHighScore);
+
+answerbtnsEl.addEventListener("click", grading);
+
+submitHSEl.addEventListener("click", submitScore);
 cancelHSEl.addEventListener("click", refresh);
+
 backToStartEl.addEventListener("click", refresh);
 
