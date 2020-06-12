@@ -8,46 +8,46 @@
   </head>
 
   <body>
-    <div class="navbar">
+    <nav class="navbar">
       <button type="button" id="view-highscore">View Highscore</button>
       <h1>Timer: <span id="timer">60</span></h1>
-    </div>
+    </nav>
 
-    <div class="start-screen">
+    <section class="start-screen">
       <h1>Code Quiz</h1>
       <p>
         Answer each of the 5 questions in 60 seconds. Missing a question lowers
         the timer by 10 seconds!
       </p>
       <button type="button" id="start-bttn">Start!</button>
-    </div>
+    </section>
 
-    <div class="quiz-screen">
+    <section class="quiz-screen">
       <h1>Question</h1>
       <p id="question-prompt"></p>
-      <lu class="answers">
-        <li><button id="1">1</button></li>
-        <li><button id="2">2</button></li>
-        <li><button id="3">3</button></li>
-        <li><button id="4">4</button></li>
-      </lu>
+      <ul class="answers">
+        <li><button></button></li>
+        <li><button></button></li>
+        <li><button></button></li>
+        <li><button></button></li>
+      </ul>
       <p id = "last-result"></p>
-    </div>
+    </section>
 
-    <div class="enter-hs-screen">
+    <section class="enter-hs-screen">
       <h1>Enter Highscore</h1>
       <form>
         <input type="text" id="highscore-name" placeholder="Enter Name" />
         <button id = "hs-cancel">Cancel</button>
         <button id = "hs-submit">Submit</button>
       </form>
-    </div>
+    </section>
 
-    <div class="leaderboard-screen">
+    <section class="leaderboard-screen">
       <h1>Leaderboards</h1>
       <ul class = "leader-boards"></ul>
       <button id = "back-to-start" type = "button">Back to Start</button>
-    </div>
+    </section>
 
     <script src="./script.js"></script>
   </body>

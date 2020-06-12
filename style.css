@@ -1,12 +1,24 @@
+body{
+    width: 600px;
+    margin-left: auto ;
+  margin-right: auto ;
+}
+
 .start-screen{
     
 }
 .quiz-screen{
     display: none;
+  
 }
 .enter-hs-screen{
     display: none;
+    
 }
 .leaderboard-screen{
     display: none;
+    
+}
+ul{
+    list-style-type: decimal;
 }

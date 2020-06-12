@@ -170,6 +170,10 @@ function submitScore(event) {
   console.log(score);
   console.log(newScore);
   console.log(leaderBoards);
+  //exception if user deletes leaderboards during quiz
+  if (leaderBoards === null) {
+    leaderBoards = [];
+  }
   leaderBoards.push(newScore);
   //sort in decreasing order
 
@@ -198,8 +202,10 @@ function organizeLeaderBoards() {
   console.log(leaderBoards);
   leaderBoards = JSON.parse(localStorage.getItem("leaderBoards"));
   console.log(leaderBoards);
+  
   //add new elements to the html
   if (leaderBoards === null) {
+    leaderBoards =[];
     return;
   } else {
     for (var i = 0; i < leaderBoards.length; i++) {
