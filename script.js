@@ -61,6 +61,7 @@ function startQuiz(event) {
 
   //reset values for timer and index and last result element
   index = 0;
+  score = 0;
   timer.textContent = 60;
   lastResultEl.textContent = "";
 
@@ -87,20 +88,21 @@ function displayQuestions() {
   if (index >= question.length) {
 
     toggleDisplay(".enter-hs-screen");
-    //check if timer is less than 0
-    console.log(score)
-    console.log(timer.textContent)
     if (timer.textContent <= 0) {
       timer.textContent = 0;
       score = 0;
       console.log(score)
     }
-    
-    toggleDisplay(".enter-hs-screen");
+    else{
+      score = timer.textContent;
+    }
     clearInterval(interval);
 
     return;
-  } else {
+  } 
+  //if not than display the next questions
+  else 
+  {
     questionPrompt.textContent = question[index];
     //go through and add questions
     //radomize a question array
