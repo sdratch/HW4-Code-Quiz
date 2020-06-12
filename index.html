@@ -13,7 +13,7 @@
       <h1>Timer: <span id="timer">60</span></h1>
     </div>
 
-    <div class="quiz-start">
+    <div class="start-screen">
       <h1>Code Quiz</h1>
       <p>
         Answer each of the 5 questions in 60 seconds. Missing a question lowers
@@ -22,7 +22,7 @@
       <button type="button" id="start-bttn">Start!</button>
     </div>
 
-    <div class="quiz-progress">
+    <div class="quiz-screen">
       <h1>Question</h1>
       <p id="question-prompt"></p>
       <lu class="answers">
@@ -34,17 +34,19 @@
       <p id = "last-result"></p>
     </div>
 
-    <div class="Enter-HS">
+    <div class="enter-hs-screen">
       <h1>Enter Highscore</h1>
       <form>
         <input type="text" id="highscore-name" placeholder="Enter Name" />
-        <button id = "cancel">Cancel</button>
-        <button id = "cancel">Submit</button>
+        <button id = "hs-cancel">Cancel</button>
+        <button id = "hs-submit">Submit</button>
       </form>
     </div>
 
-    <div class="Highscore">
+    <div class="leaderboard-screen">
       <h1>Leaderboards</h1>
+      <ul class = "leader-boards"></ul>
+      <button id = "back-to-start" type = "button">Back to Start</button>
     </div>
 
     <script src="./script.js"></script>

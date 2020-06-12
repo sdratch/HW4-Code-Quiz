@@ -1,9 +1,12 @@
-.Quiz-Progress{
-    /* //display: none; */
+.start-screen{
+    
 }
-.Enter-HS{
-    /* display: none; */
+.quiz-screen{
+    display: none;
 }
-.Highscore{
-    /* display: none; */
+.enter-hs-screen{
+    display: none;
+}
+.leaderboard-screen{
+    display: none;
 }
